@@ -25,6 +25,9 @@ body {
 body {
   min-height: 100vh;
   font-family: "Assistant", sans-serif;
+  direction: rtl;
+  text-align: right;
+  overflow-x: hidden;
   color: var(--text);
   background:
     radial-gradient(circle at 8% 10%, rgba(237, 217, 224, 0.55), transparent 34%),
@@ -66,11 +69,12 @@ body {
 
 .hero-copy h1 {
   margin: 0;
-  font-family: "Playfair Display", serif;
+  font-family: "Assistant", "Heebo", "Rubik", Arial, sans-serif;
   color: var(--navy);
   font-size: clamp(1.22rem, 5.2vw, 2.35rem);
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
+  font-weight: 700;
 }
 
 .hook-line {
@@ -144,7 +148,8 @@ body {
 .section-block h2 {
   margin: 0;
   display: inline-block;
-  font-family: "Playfair Display", serif;
+  font-family: "Assistant", "Heebo", "Rubik", Arial, sans-serif;
+  font-weight: 700;
   color: var(--navy);
   font-size: clamp(1.3rem, 4vw, 1.9rem);
   padding-bottom: 0.2rem;
@@ -320,6 +325,73 @@ body {
 
   .actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .page-wrap {
+    width: min(1000px, 94%);
+    padding-top: 0.9rem;
+  }
+
+  .brand-card {
+    padding: 0.9rem;
+  }
+
+  .hero {
+    padding: 0.9rem;
+  }
+
+  .hero-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 0.7rem;
+  }
+
+  .hero-copy {
+    order: 1;
+    max-width: 100%;
+    width: 100%;
+    text-align: right;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(1.02rem, 4.7vw, 1.28rem);
+    line-height: 1.28;
+  }
+
+  .hook-line {
+    white-space: normal;
+  }
+
+  .profile-wrap {
+    order: 2;
+  }
+
+  .profile-frame {
+    width: clamp(84px, 22vw, 108px);
+  }
+
+  .hero-name {
+    font-size: 1.02rem;
+  }
+
+  .hero-role {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .hero-cta {
+    margin-top: 0.75rem;
+  }
+
+  .hero-note {
+    text-align: right;
+  }
+
+  .action-btn {
+    min-height: 52px;
   }
 }
 
