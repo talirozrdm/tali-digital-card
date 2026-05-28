@@ -1,4 +1,5 @@
 :root {
+  --user-font-scale: 1;
   --navy: #0f2340;
   --navy-soft: #223d61;
   --cream: #f7efe4;
@@ -22,9 +23,13 @@ body {
   padding: 0;
 }
 
+html {
+  font-size: calc(16px * var(--user-font-scale));
+}
+
 body {
   min-height: 100vh;
-  font-family: "Assistant", sans-serif;
+  font-family: "Assistant", "Heebo", "Rubik", Arial, sans-serif;
   direction: rtl;
   text-align: right;
   overflow-x: hidden;
@@ -35,10 +40,15 @@ body {
     linear-gradient(145deg, var(--cream), #f4e6ea);
 }
 
+:focus-visible {
+  outline: 3px solid #1a57a8;
+  outline-offset: 2px;
+}
+
 .page-wrap {
   width: min(1000px, 92%);
   margin: 0 auto;
-  padding: 1.2rem 0 2.6rem;
+  padding: 1rem 0 2.5rem;
 }
 
 .brand-card {
@@ -64,15 +74,15 @@ body {
 }
 
 .hero-copy {
-  max-width: 28ch;
+  max-width: 30ch;
 }
 
 .hero-copy h1 {
   margin: 0;
   font-family: "Assistant", "Heebo", "Rubik", Arial, sans-serif;
   color: var(--navy);
-  font-size: clamp(1.22rem, 5.2vw, 2.35rem);
-  line-height: 1.1;
+  font-size: clamp(1.12rem, 4.5vw, 2.15rem);
+  line-height: 1.2;
   letter-spacing: 0;
   font-weight: 700;
 }
@@ -86,7 +96,7 @@ body {
   color: var(--navy-soft);
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: rgba(200, 170, 104, 0.65);
+  text-decoration-color: rgba(200, 170, 104, 0.72);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.14em;
 }
@@ -94,14 +104,14 @@ body {
 .hero-name {
   margin: 0.65rem 0 0;
   color: var(--navy);
-  font-size: clamp(1.08rem, 3.8vw, 1.3rem);
+  font-size: clamp(1.05rem, 3.8vw, 1.28rem);
   font-weight: 700;
 }
 
 .hero-role {
   margin: 0.32rem 0 0;
   color: var(--muted);
-  font-size: clamp(0.96rem, 3.2vw, 1.1rem);
+  font-size: clamp(0.95rem, 3.2vw, 1.08rem);
   line-height: 1.45;
 }
 
@@ -111,7 +121,7 @@ body {
 }
 
 .profile-frame {
-  width: clamp(92px, 24vw, 145px);
+  width: clamp(88px, 22vw, 142px);
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   padding: 6px;
@@ -136,7 +146,7 @@ body {
 .hero-note {
   margin: 0.55rem 0 0;
   color: var(--navy-soft);
-  text-align: center;
+  text-align: right;
   font-size: 0.95rem;
   font-weight: 600;
 }
@@ -151,7 +161,7 @@ body {
   font-family: "Assistant", "Heebo", "Rubik", Arial, sans-serif;
   font-weight: 700;
   color: var(--navy);
-  font-size: clamp(1.3rem, 4vw, 1.9rem);
+  font-size: clamp(1.2rem, 3.8vw, 1.75rem);
   padding-bottom: 0.2rem;
   border-bottom: 2px solid rgba(200, 170, 104, 0.55);
 }
@@ -218,7 +228,7 @@ body {
 .service-card p {
   margin-top: 0.28rem;
   color: var(--muted);
-  line-height: 1.54;
+  line-height: 1.56;
 }
 
 .core-message {
@@ -232,9 +242,21 @@ body {
 .core-message p {
   margin: 0;
   color: var(--navy);
-  font-family: "Playfair Display", serif;
-  font-size: clamp(1.15rem, 3.9vw, 1.5rem);
-  line-height: 1.45;
+  font-family: "Assistant", "Heebo", "Rubik", Arial, sans-serif;
+  font-size: clamp(1.08rem, 3.4vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.pre-contact-cta {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(200, 170, 104, 0.4);
+  border-radius: 16px;
+  padding: 0.95rem;
+}
+
+.pre-contact-cta .action-btn {
+  margin-top: 0.8rem;
 }
 
 .contact-primary {
@@ -255,7 +277,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.46rem;
-  line-height: 1.2;
+  line-height: 1.25;
   min-height: 50px;
   width: 100%;
   border-radius: 13px;
@@ -310,9 +332,191 @@ body {
   color: #1f2c46;
 }
 
+.card-footer {
+  margin-top: 1.25rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(15, 35, 64, 0.12);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card-footer a {
+  color: var(--navy-soft);
+  text-decoration: none;
+  font-size: 0.94rem;
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+}
+
+.legal-card {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.legal-card h1 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(1.7rem, 5vw, 2.4rem);
+}
+
+.legal-card p,
+.legal-card li {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.legal-card ul {
+  margin-top: 0.4rem;
+}
+
+.legal-card .legal-contact {
+  background: #fffaf2;
+  border: 1px solid rgba(15, 35, 64, 0.12);
+  border-radius: 14px;
+  padding: 0.85rem;
+}
+
+.back-link {
+  margin-top: 1.2rem;
+  display: inline-block;
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.a11y-toggle {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 1200;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 0.95rem;
+  font: inherit;
+  font-weight: 700;
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(15, 35, 64, 0.28);
+  cursor: pointer;
+}
+
+.a11y-panel {
+  position: fixed;
+  left: 1rem;
+  bottom: 4.25rem;
+  width: min(92vw, 320px);
+  z-index: 1300;
+  background: #fff;
+  border: 1px solid rgba(15, 35, 64, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(15, 35, 64, 0.2);
+  padding: 0.75rem;
+}
+
+.a11y-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.a11y-head h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.a11y-close {
+  border: 0;
+  background: transparent;
+  color: var(--navy);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.a11y-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+.a11y-grid button {
+  border: 1px solid rgba(15, 35, 64, 0.2);
+  background: #fffefb;
+  border-radius: 10px;
+  min-height: 38px;
+  padding: 0.4rem 0.45rem;
+  font: inherit;
+  color: var(--navy);
+  cursor: pointer;
+}
+
+.a11y-grid button:hover {
+  border-color: rgba(200, 170, 104, 0.78);
+}
+
+.a11y-statement-link {
+  display: inline-block;
+  margin-top: 0.65rem;
+  color: var(--navy-soft);
+  text-decoration: none;
+}
+
+.a11y-statement-link:hover {
+  text-decoration: underline;
+}
+
+body.a11y-high-contrast {
+  background: #ffffff;
+  color: #000;
+}
+
+body.a11y-high-contrast .brand-card,
+body.a11y-high-contrast .hero,
+body.a11y-high-contrast .service-card,
+body.a11y-high-contrast .pre-contact-cta,
+body.a11y-high-contrast .core-message,
+body.a11y-high-contrast .legal-card,
+body.a11y-high-contrast .a11y-panel {
+  background: #fff !important;
+  border-color: #000 !important;
+  box-shadow: none !important;
+}
+
+body.a11y-high-contrast * {
+  color: #000 !important;
+}
+
+body.a11y-grayscale {
+  filter: grayscale(1);
+}
+
+body.a11y-links-highlight a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+}
+
+body.a11y-reduce-motion *,
+body.a11y-reduce-motion *::before,
+body.a11y-reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
 @media (min-width: 700px) {
   .page-wrap {
-    padding-top: 1.8rem;
+    padding-top: 1.5rem;
   }
 
   .hero-copy {
@@ -331,7 +535,7 @@ body {
 @media (max-width: 768px) {
   .page-wrap {
     width: min(1000px, 94%);
-    padding-top: 0.9rem;
+    padding-top: 0.8rem;
   }
 
   .brand-card {
@@ -357,7 +561,7 @@ body {
   }
 
   .hero-copy h1 {
-    font-size: clamp(1.02rem, 4.7vw, 1.28rem);
+    font-size: clamp(1rem, 4.6vw, 1.24rem);
     line-height: 1.28;
   }
 
@@ -370,7 +574,7 @@ body {
   }
 
   .profile-frame {
-    width: clamp(84px, 22vw, 108px);
+    width: clamp(84px, 22vw, 104px);
   }
 
   .hero-name {
@@ -382,28 +586,18 @@ body {
     line-height: 1.5;
   }
 
-  .hero-cta {
-    margin-top: 0.75rem;
-  }
-
-  .hero-note {
-    text-align: right;
-  }
-
   .action-btn {
     min-height: 52px;
   }
-}
 
-@media (max-width: 390px) {
-  .hero-copy h1 {
-    font-size: 1.05rem;
+  .a11y-panel {
+    left: 0.6rem;
+    bottom: 4.1rem;
   }
-}
 
-@media (max-width: 340px) {
-  .hero-copy h1 {
-    font-size: 0.94rem;
+  .a11y-toggle {
+    left: 0.6rem;
+    bottom: 0.8rem;
   }
 }
 
