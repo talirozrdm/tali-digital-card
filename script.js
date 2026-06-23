@@ -1,4 +1,104 @@
 (function () {
+  const items = Array.from(document.querySelectorAll(".expertise-item"));
+  const tooltip = document.getElementById("expertiseTooltip");
+
+  if (!items.length || !tooltip) {
+    return;
+  }
+
+  let activeItem = null;
+  let pinnedItem = null;
+
+  function resetItems() {
+    items.forEach((item) => item.setAttribute("aria-expanded", "false"));
+  }
+
+  function placeTooltip(item) {
+    const itemRect = item.getBoundingClientRect();
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const margin = 12;
+    const top = itemRect.bottom + 12;
+    let left = itemRect.left + itemRect.width / 2 - tooltipRect.width / 2;
+
+    left = Math.max(margin, Math.min(left, window.innerWidth - tooltipRect.width - margin));
+
+    tooltip.style.top = `${top}px`;
+    tooltip.style.left = `${left}px`;
+  }
+
+  function showTooltip(item) {
+    const text = item.getAttribute("data-tooltip");
+    if (!text) return;
+
+    activeItem = item;
+    tooltip.textContent = text;
+    tooltip.hidden = false;
+    resetItems();
+    item.setAttribute("aria-expanded", "true");
+
+    requestAnimationFrame(() => {
+      placeTooltip(item);
+      tooltip.classList.add("is-visible");
+    });
+  }
+
+  function hideTooltip() {
+    activeItem = null;
+    pinnedItem = null;
+    tooltip.classList.remove("is-visible");
+    resetItems();
+
+    window.setTimeout(() => {
+      if (!activeItem) {
+        tooltip.hidden = true;
+      }
+    }, 140);
+  }
+
+  items.forEach((item) => {
+    item.addEventListener("mouseenter", () => showTooltip(item));
+    item.addEventListener("focus", () => showTooltip(item));
+    item.addEventListener("mouseleave", () => {
+      if (pinnedItem !== item) hideTooltip();
+    });
+    item.addEventListener("blur", () => {
+      if (pinnedItem !== item) hideTooltip();
+    });
+
+    item.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (pinnedItem === item && !tooltip.hidden) {
+        hideTooltip();
+        return;
+      }
+      pinnedItem = item;
+      showTooltip(item);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof HTMLElement)) return;
+    if (!event.target.closest(".expertise-strip")) {
+      hideTooltip();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (activeItem && !tooltip.hidden) {
+      placeTooltip(activeItem);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && activeItem) {
+      const itemToFocus = activeItem;
+      hideTooltip();
+      itemToFocus.focus();
+    }
+  });
+})();
+
+(function () {
   const STORAGE_KEY = "tali_accessibility_preferences_v1";
   const defaults = {
     fontScale: 1,
